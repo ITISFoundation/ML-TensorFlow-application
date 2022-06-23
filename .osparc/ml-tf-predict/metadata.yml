@@ -1,0 +1,31 @@
+name: Predict with TensorFlow model
+description: "Generate predictions with a TensorFlow model"
+key: simcore/services/comp/ml-tf-predict
+version: 1.0.0
+integration-version: "2.0.0"
+type: computational
+authors:
+  - name: "Elisabetta Iavarone"
+    email: "iavarone@itis.swiss"
+    affiliation: "IT'IS Foundation"
+contact: "iavarone@itis.swiss"
+inputs:
+  input_1:
+    label: Prediction data (X)
+    description: Numpy array of data to be labelled  
+    type: data:*/*
+    fileToKeyMap:
+      predict_data.npy: input_1
+  input_2:
+    label: Model 
+    description: Trained TensorFlow model in h5 format
+    type: data:*/*
+    fileToKeyMap:
+      model.h5: input_2
+outputs:
+  output_1:
+    label: Predictions
+    description: Output predictions for the input data
+    type: data:*/*
+    fileToKeyMap:
+      predictions.npy: output_1

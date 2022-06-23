@@ -1,0 +1,5 @@
+services:
+  ml-tf-train:
+    build:
+      context: ./ml-tf-train
+      dockerfile: Dockerfile

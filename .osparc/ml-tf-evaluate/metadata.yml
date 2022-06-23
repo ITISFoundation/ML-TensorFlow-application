@@ -1,0 +1,31 @@
+name: Evaluate TensorFlow Model
+description: "Evaluate a TensorFlow model predictions agains ground truth"
+key: simcore/services/comp/ml-tf-evaluate
+version: 1.0.0
+integration-version: "2.0.0"
+type: computational
+authors:
+  - name: "Elisabetta Iavarone"
+    email: "iavarone@itis.swiss"
+    affiliation: "IT'IS Foundation"
+contact: "iavarone@itis.swiss"
+inputs:
+  input_1:
+    label: Prediction data (X)
+    description: Numpy array of data to be labelled  
+    type: data:*/*
+    fileToKeyMap:
+      predict_data.npy: input_1
+  input_2:
+    label: Prediction labels (Y)
+    description: Numpy array of labels to evaluate model prediction  
+    type: data:*/*
+    fileToKeyMap:
+      predict_label.npy: input_2
+  input_3:
+    label: Model 
+    description: Trained TensorFlow model in h5 format
+    type: data:*/*
+    fileToKeyMap:
+      model.h5: input_3
+outputs:

@@ -1,0 +1,14 @@
+name: "Base image"
+thumbnail:
+description: "used only for building not to be published"
+key: simcore/services/comp/common
+version: 0.0.0
+integration-version: 2.0.0
+type: computational
+authors:
+  - name: "Elisabetta Iavarone"
+    email: "iavarone@itis.swiss"
+    affiliation: "IT'IS Foundation"
+contact: "iavarone@itis.swiss"
+inputs: {}
+outputs: {}

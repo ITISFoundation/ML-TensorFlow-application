@@ -1,0 +1,6 @@
+services:
+  ml-tf-predict:
+    build:
+      context: ./ml-tf-predict
+      dockerfile: Dockerfile
+    

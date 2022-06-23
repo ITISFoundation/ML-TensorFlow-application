@@ -1,0 +1,10 @@
+# not interested in storing this file
+docker-compose.yml
+
+# ignore all files in validation
+validation/
+
+.devenv
+.vscode
+
+*.ignore.*
