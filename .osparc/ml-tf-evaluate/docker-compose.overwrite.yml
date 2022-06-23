@@ -1,0 +1,5 @@
+services:
+  ml-tf-evaluate:
+    build:
+      context: ./ml-tf-evaluate
+      dockerfile: Dockerfile

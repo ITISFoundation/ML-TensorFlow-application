@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  ml-tf:
+    image: simcore/services/comp/${IMAGE_TO_RUN}:${TAG_TO_RUN}
+    environment:
+      - INPUT_FOLDER=/input/test_data
+      - OUTPUT_FOLDER=/output/test_data
+    volumes:
+      - ./${IMAGE_TO_RUN}/input/:/input/test_data
+      - ./${IMAGE_TO_RUN}/output/:/output/test_data
