@@ -7,4 +7,6 @@ validation/
 .devenv
 .vscode
 
+*zip
+
 *.ignore.*

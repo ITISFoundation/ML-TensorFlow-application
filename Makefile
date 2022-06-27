@@ -64,27 +64,30 @@ build: compose-spec ## build docker images
 
 .PHONY: run-train-local
 run-train-local: ## runs train image with local configuration
+	rm -f ml-tf-train.zip
+	smbget -U ${DEVOPS_USER}%${DEVOPS_PASSWORD} smb://biobackup.speag.com/osparc/data/ML-TensorFlow-application/ml-tf-train.zip -o ml-tf-train.zip
+	unzip -o ml-tf-train.zip -d ml-tf-train/input
 	IMAGE_TO_RUN=${IMAGE_TRAIN} \
 	TAG_TO_RUN=${TAG_TRAIN} \
 	docker-compose --file docker-compose-local.yml up
 
 .PHONY: run-predict-local
 run-predict-local: ## runs predict image with local configuration
+	rm -f ml-tf-predict.zip
+	smbget -U ${DEVOPS_USER}%${DEVOPS_PASSWORD} smb://biobackup.speag.com/osparc/data/ML-TensorFlow-application/ml-tf-predict.zip -o ml-tf-predict.zip
+	unzip -o ml-tf-predict.zip -d ml-tf-predict/input
 	IMAGE_TO_RUN=${IMAGE_PREDICT} \
 	TAG_TO_RUN=${TAG_PREDICT} \
 	docker-compose --file docker-compose-local.yml up
 
 .PHONY: run-evaluate-local
 run-evaluate-local: ## runs evaluate image with local configuration
+	rm -f ml-tf-evaluate.zip
+	smbget -U ${DEVOPS_USER}%${DEVOPS_PASSWORD} smb://biobackup.speag.com/osparc/data/ML-TensorFlow-application/ml-tf-evaluate.zip -o ml-tf-evaluate.zip
+	unzip -o ml-tf-evaluate.zip -d ml-tf-evaluate/input
 	IMAGE_TO_RUN=${IMAGE_EVALUATE} \
 	TAG_TO_RUN=${TAG_EVALUATE} \
 	docker-compose --file docker-compose-local.yml up
-
-
-.PHONY: shell-train # Doesn't work for now
-shell-train:  ## Starts a shell for train service instead of running the container. Useful for development.
-	# starting service and go in...
-	$(call _docker_compose_cli,run --service-ports $(IMAGE_TRAIN) /bin/sh)
 
 
 publish-local:  ## push to local throw away registry to test integration

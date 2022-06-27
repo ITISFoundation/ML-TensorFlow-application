@@ -15,6 +15,7 @@ model.summary()
 # Load data
 inputData = np.load(input_data_path)
 print(f"Loaded input data with dimension {inputData.shape}")
+print(f"Evaluation samples {inputData.shape[0]}")
 
 # Predict
 out = model.predict(inputData, verbose=2)

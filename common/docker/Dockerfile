@@ -41,7 +41,8 @@ ENV INPUT_FOLDER="/input" \
 
 WORKDIR /home/${SC_USER_NAME}
 
-
+# Prevent tensorflow from allocating all the GPU memory by default, but it grows as needed
+ENV TF_FORCE_GPU_ALLOW_GROWTH=true
 
 RUN pip3 install --upgrade pip
 RUN pip3 install sklearn

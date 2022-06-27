@@ -18,10 +18,16 @@ batch_size = input_dict["input_7"]
 # Load training data
 trainX = np.load(train_data_path)
 trainY = np.load(train_label_path)
+print(f"Input dimensions {trainX.shape[1:]}")
+print(f"Train samples {trainX.shape[0]}")
+print(f"Number of output classes {trainY.shape[1]}")
 
 # Load test data, if available
 if os.path.exists(validation_data_path):
-    val = (np.load(validation_data_path), np.load(validation_label_path))
+    valX = np.load(validation_data_path)
+    valY = np.load(validation_label_path)
+    val = (valX, valY)
+    print(f"Validation samples {valX.shape[0]}")
 else:
     val = None
 

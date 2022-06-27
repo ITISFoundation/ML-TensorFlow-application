@@ -14,12 +14,20 @@ model.summary()
 
 # Load data
 inputData = np.load(input_data_path)
+inputlabel = np.load(input_label_path)
+groundTruth = np.load(input_label_path)
+
 print(f"Loaded input data with dimension {inputData.shape}")
+print(f"Prediction samples {inputData.shape[0]}")
 
 # Predict
-out = model.evaluate(inputData, verbose=2)
+out = model.evaluate(inputData, inputlabel, verbose=2)
 
-#print(f"Evaluating results...\n")
-#for name, val in zip(model.metrics_names, out):
-#    print(f"{name:.6f}: {val:.6f}")
+print(f"Saving evaluation results to file...\n")
+
+outputFile = os.path.join(os.environ["OUTPUT_FOLDER"], "evaluation_output.txt")
+
+with open(outputFile, 'w') as f:
+    for name, val in zip(model.metrics_names, out):
+        f.write("{}: {} \n".format(name, val))
 

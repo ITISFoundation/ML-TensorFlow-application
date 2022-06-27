@@ -8,3 +8,8 @@ services:
     volumes:
       - ./${IMAGE_TO_RUN}/input/:/input/test_data
       - ./${IMAGE_TO_RUN}/output/:/output/test_data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]

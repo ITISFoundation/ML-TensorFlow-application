@@ -1,5 +1,5 @@
 name: Train TensorFlow Model
-description: "Trains a TensorFlow model"
+description: "Train a TensorFlow model"
 key: simcore/services/comp/ml-tf-train
 version: 1.0.0
 integration-version: "2.0.0"

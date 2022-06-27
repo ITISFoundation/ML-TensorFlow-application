@@ -1,5 +1,5 @@
 name: Evaluate TensorFlow Model
-description: "Evaluate a TensorFlow model predictions agains ground truth"
+description: "Evaluate a TensorFlow model predictions against ground truth"
 key: simcore/services/comp/ml-tf-evaluate
 version: 1.0.0
 integration-version: "2.0.0"
@@ -29,3 +29,9 @@ inputs:
     fileToKeyMap:
       model.h5: input_3
 outputs:
+  output_1:
+    label: Evaluation output
+    description: Text file containing evaluation metrics
+    type: data:*/*
+    fileToKeyMap:
+      evaluation_output.txt: output_1
