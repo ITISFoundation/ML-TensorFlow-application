@@ -81,12 +81,6 @@ run-evaluate-local: ## runs evaluate image with local configuration
 	docker-compose --file docker-compose-local.yml up
 
 
-.PHONY: shell-train # Doesn't work for now
-shell-train:  ## Starts a shell for train service instead of running the container. Useful for development.
-	# starting service and go in...
-	$(call _docker_compose_cli,run --service-ports $(IMAGE_TRAIN) /bin/sh)
-
-
 publish-local:  ## push to local throw away registry to test integration
 	@docker tag simcore/services/comp/${IMAGE_TRAIN}:${TAG_TRAIN} registry:5000/simcore/services/comp/${IMAGE_TRAIN}:${TAG_TRAIN}
 	@docker tag simcore/services/comp/${IMAGE_PREDICT}:${TAG_PREDICT} registry:5000/simcore/services/comp/${IMAGE_PREDICT}:${TAG_PREDICT}
