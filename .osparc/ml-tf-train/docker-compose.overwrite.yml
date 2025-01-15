@@ -1,5 +1,7 @@
 services:
   ml-tf-train:
+    depends_on: 
+      - common
     build:
       context: ./ml-tf-train
       dockerfile: Dockerfile

@@ -1,5 +1,7 @@
 services:
   ml-tf-predict:
+    depends_on: 
+      - common
     build:
       context: ./ml-tf-predict
       dockerfile: Dockerfile
