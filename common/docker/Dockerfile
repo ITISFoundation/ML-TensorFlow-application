@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.9.1-gpu as base
+FROM tensorflow/tensorflow:2.9.1-gpu AS base
 
 LABEL maintainer="Elisabetta Iavarone <iavarone@itis.swiss>"
 
@@ -32,7 +32,7 @@ RUN apt-get update && \
 
 
 # --------------------------Production stage -------------------
-FROM base as production
+FROM base AS production
 
 ENV SC_BUILD_TARGET production
 
