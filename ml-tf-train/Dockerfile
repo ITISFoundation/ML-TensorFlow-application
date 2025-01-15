@@ -1,4 +1,4 @@
-FROM simcore/services/comp/common:0.0.0 as service-base
+FROM simcore/services/comp/common:0.0.0 AS service-base
 
 LABEL maintainer="Elisabetta Iavarone <iavarone@itis.swiss>"
 

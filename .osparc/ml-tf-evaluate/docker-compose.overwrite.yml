@@ -1,5 +1,7 @@
 services:
   ml-tf-evaluate:
+    depends_on: 
+      - common
     build:
       context: ./ml-tf-evaluate
       dockerfile: Dockerfile

@@ -17,7 +17,7 @@ define _bumpversion
 	# upgrades as $(subst $(1),,$@) version, commits and tags
 	@docker run -it --rm -v $(PWD):/ml-lab \
 		-u $(shell id -u):$(shell id -g) \
-		itisfoundation/ci-service-integration-library:v1.0.1-dev-32 \
+		itisfoundation/ci-service-integration-library:v2.0.9-dev \
 		sh -c "cd /ml-lab && bump2version --verbose --list --config-file $(1) $(subst $(2),,$@)"
 endef
 
@@ -43,7 +43,7 @@ version-evaluate-patch version-evaluate-minor version-evaluate-major: .bumpversi
 compose-spec: ## runs ooil to assemble the docker-compose.yml file
 	@docker run -it --rm -v $(PWD):/ml-lab \
 		-u $(shell id -u):$(shell id -g) \
-		itisfoundation/ci-service-integration-library:v1.0.1-dev-32 \
+		itisfoundation/ci-service-integration-library:v2.0.9-dev \
 		sh -c "cd /ml-lab && ooil compose"
 
 .PHONY: devenv
@@ -60,7 +60,7 @@ devenv: ## creates python virtualenv
 
 .PHONY: build
 build: compose-spec ## build docker images
-	docker-compose build
+	docker compose build
 
 .PHONY: run-train-local
 run-train-local: ## runs train image with local configuration
@@ -69,7 +69,7 @@ run-train-local: ## runs train image with local configuration
 	unzip -o ml-tf-train.zip -d ml-tf-train/input
 	IMAGE_TO_RUN=${IMAGE_TRAIN} \
 	TAG_TO_RUN=${TAG_TRAIN} \
-	docker-compose --file docker-compose-local.yml up
+	docker compose --file docker-compose-local.yml up
 
 .PHONY: run-predict-local
 run-predict-local: ## runs predict image with local configuration
@@ -78,7 +78,7 @@ run-predict-local: ## runs predict image with local configuration
 	unzip -o ml-tf-predict.zip -d ml-tf-predict/input
 	IMAGE_TO_RUN=${IMAGE_PREDICT} \
 	TAG_TO_RUN=${TAG_PREDICT} \
-	docker-compose --file docker-compose-local.yml up
+	docker compose --file docker-compose-local.yml up
 
 .PHONY: run-evaluate-local
 run-evaluate-local: ## runs evaluate image with local configuration
@@ -87,7 +87,7 @@ run-evaluate-local: ## runs evaluate image with local configuration
 	unzip -o ml-tf-evaluate.zip -d ml-tf-evaluate/input
 	IMAGE_TO_RUN=${IMAGE_EVALUATE} \
 	TAG_TO_RUN=${TAG_EVALUATE} \
-	docker-compose --file docker-compose-local.yml up
+	docker compose --file docker-compose-local.yml up
 
 
 publish-local:  ## push to local throw away registry to test integration

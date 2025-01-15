@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.9.1-gpu as base
+FROM tensorflow/tensorflow:2.9.1-gpu AS base
 
 LABEL maintainer="Elisabetta Iavarone <iavarone@itis.swiss>"
 
@@ -32,7 +32,7 @@ RUN apt-get update && \
 
 
 # --------------------------Production stage -------------------
-FROM base as production
+FROM base AS production
 
 ENV SC_BUILD_TARGET production
 
@@ -45,7 +45,7 @@ WORKDIR /home/${SC_USER_NAME}
 ENV TF_FORCE_GPU_ALLOW_GROWTH=true
 
 RUN pip3 install --upgrade pip
-RUN pip3 install sklearn
+RUN pip3 install scikit-learn
 
 # Verify TensorFlow install
 RUN python3 -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
