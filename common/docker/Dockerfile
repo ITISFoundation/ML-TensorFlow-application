@@ -45,7 +45,7 @@ WORKDIR /home/${SC_USER_NAME}
 ENV TF_FORCE_GPU_ALLOW_GROWTH=true
 
 RUN pip3 install --upgrade pip
-RUN pip3 install sklearn
+RUN pip3 install scikit-learn
 
 # Verify TensorFlow install
 RUN python3 -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
